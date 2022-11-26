@@ -1,0 +1,25 @@
+version: "2"
+services:
+  orient-node-0:
+    image: orientdb:2.2.30
+    command: dserver.sh
+    environment:
+      ORIENTDB_ROOT_PASSWORD: admin
+    ports:
+      - 2480:2480
+
+  orient-node-1:
+    image: orientdb:2.2.30
+    command: dserver.sh
+    environment:
+      ORIENTDB_ROOT_PASSWORD: admin
+    depends_on:
+      - orient-node-0
+
+  orient-node-2:
+      image: orientdb:2.2.30
+      command: dserver.sh
+      environment:
+        ORIENTDB_ROOT_PASSWORD: admin
+      depends_on:
+        - orient-node-0
